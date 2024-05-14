@@ -17,7 +17,12 @@ app.get("/", function(req, res) {
 // Middleware to serve static files
 app.use("/public", express.static(__dirname + "/public"));
 
-
+// Get a response from the server
+app.get("/json", function(req, res) {
+    res.json({
+        "message": "Hello json"
+    });
+});
 
 
 
