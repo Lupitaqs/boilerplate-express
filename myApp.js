@@ -1,5 +1,6 @@
 let express = require('express');
 let nodemon = require('nodemon');
+require('dotenv').config(); // Load environment variables
 
 let app = express();
 
@@ -19,8 +20,13 @@ app.use("/public", express.static(__dirname + "/public"));
 
 // Get a response from the server
 app.get("/json", function(req, res) {
+    // Use the environment variable
+    let message = "Hello json";
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+        message = message.toUpperCase();
+    }
     res.json({
-        "message": "Hello json"
+        "message": message
     });
 });
 
