@@ -55,6 +55,17 @@ app.get("/:word/echo", (req, res) => {
     });
 });
 
+// Build an API endpoint
+app.get("/name", (req, res) => {
+    var firstName = req.query.first;
+    var lastName = req.query.last;
+    // OR destructuring assignment
+    // var { first: firstname, last:lastname } = req.query;
+    res.json({
+        "name": `${firstName} ${lastName}`
+    });
+});
+
 
 
 
