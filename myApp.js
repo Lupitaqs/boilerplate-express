@@ -47,6 +47,13 @@ app.get("/now", (req, res, next) => {
     });
 });
 
+// Route parameters -- build an echo server
+app.get("/:word/echo", (req, res) => {
+    const { word } = req.params;
+    res.json({
+        "echo": word
+    });
+});
 
 
 
