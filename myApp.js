@@ -12,8 +12,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 // app.get("/", function(req, res) {
 //     res.send("Hello Express");
 // });
@@ -38,7 +36,16 @@ app.get("/json", function(req, res) {
     });
 });
 
-
+// Chain middleware to create a time server
+app.get("/now", (req, res, next) => {
+    req.time = new Date().toString();
+    next(); 
+}
+, (req, res) => {
+    res.json({
+        "time": req.time
+    });
+});
 
 
 
