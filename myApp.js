@@ -4,7 +4,13 @@ require('dotenv').config(); // Load environment variables
 
 let app = express();
 
-console.log("Hello World")
+var bodyParser = require('body-parser');
+
+console.log("Hello World");
+
+// Middleware to parse the body of a POST request
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // Logger middleware
 app.use((req, res, next) => {
